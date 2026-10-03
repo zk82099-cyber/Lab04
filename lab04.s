@@ -2,15 +2,16 @@
 .globl sum
 
 sum:
-    movb $0, %al
-    movb $0, %bl
+    mov (%rsi), %eax
+    mov $0, %ecx
     loop1:
-        add (%rdi), %bl
-        incb %al;
-        cmp (%rsi), %al
-        jle loop1
+        add (%rdi), %rax
+        addq $4, %rdi 
+        inc %ecx;
+        cmpl %ecx, %eax
+        jmp loop1
 
-    mov %bl, (%rax)    
+      
     ret
 
 .section .note.GNU-stack,"",@progbits
