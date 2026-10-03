@@ -3,13 +3,14 @@
 
 sum:
     mov $0, %rax
-    mov $0, %ecx
+    mov $0, %rcx
+
     loop1:
-        add (%rdi), %rax
-        addq $4, %rdi 
-        inc %ecx;
-        cmpl %ecx, %esi
-        jle loop1
+        addq (%rdi), %rax
+        addq $4, %rdi
+        inc %rcx;
+        cmp %rsi, %rcx
+        jl loop1
 
       
     ret
